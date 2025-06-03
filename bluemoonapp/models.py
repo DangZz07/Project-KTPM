@@ -234,3 +234,10 @@ class Notification(models.Model):
         verbose_name_plural = "Quản lý thông báo các hộ"
     def __str__(self):
         return self.title
+    
+    class  NotificationManager(models.Manager):
+        """
+        Custom manager để lấy thông báo cho từng phòng.
+        """
+        def get_notifications_for_room(self, room_id):
+            return self.filter(room_id=room_id).order_by('-date')
