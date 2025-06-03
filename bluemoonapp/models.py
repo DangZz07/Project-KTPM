@@ -219,25 +219,3 @@ class Article(models.Model):
     class Meta:
         verbose_name = "Thông báo"
         verbose_name_plural = "Quản lý thông báo"
-
-class Notification(models.Model):
-    """
-    Model cho thông báo gửi đến từng phòng.
-    """
-    id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=255,verbose_name="Tiêu đề")
-    content = models.TextField(verbose_name="Nội dung")
-    date = models.DateField(auto_now_add=True,verbose_name="Ngày đăng")
-    room_id = models.ForeignKey(apartment, on_delete=models.CASCADE, related_name="notifications",verbose_name="Số phòng")
-    class Meta:
-        verbose_name = "Quản lý thông báo các hộ"
-        verbose_name_plural = "Quản lý thông báo các hộ"
-    def __str__(self):
-        return self.title
-    
-    class  NotificationManager(models.Manager):
-        """
-        Custom manager để lấy thông báo cho từng phòng.
-        """
-        def get_notifications_for_room(self, room_id):
-            return self.filter(room_id=room_id).order_by('-date')
