@@ -34,3 +34,26 @@ class ArticleAdmin(admin.ModelAdmin):
         extra_context['show_save_and_continue'] = False
         return super().changeform_view(request, object_id, form_url, extra_context)
 admin.site.register(Article, ArticleAdmin)
+
+
+@admin.register(RoomUser)
+class RoomUser(admin.ModelAdmin):
+    form = forms.RoomUserForm
+    list_display = ['username', 'room_id', 'registry_email','phone_number','is_approved']
+    search_fields = ['username', 'room_id__room_id', 'registry_email','phone_number','is_approved']
+    exclude = ['last_login','password', 'is_active']
+    class Media:
+        css = {
+            'all': ('css/custom_admin.css',)  
+        }
+    # Tùy chỉnh title
+    def changelist_view(self, request, extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['title'] = _("Quản lý tài khoản")
+        return super().changelist_view(request, extra_context=extra_context)
+    # Tắt các nút "Lưu và thêm mới" và "Lưu và tiếp tục chỉnh sửa" mặc định của Django
+    def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['show_save_and_add_another'] = False
+        extra_context['show_save_and_continue'] = False
+        return super().changeform_view(request, object_id, form_url, extra_context)
