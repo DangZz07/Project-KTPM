@@ -20,24 +20,38 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ly@74ye01$f#1o%zm!j%d2d(^3^9co^t&g#tjbuq4ptm3l1qv4'
+SECRET_KEY = 'django-insecure-1v+fbc!rdrq=tbamx4myhnd!#n4ww2rkq1##qqnoxy+xwubf7d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['*']
+AUTH_USER_MODEL = 'nmcnpmapp.SuperUser'
 
-ALLOWED_HOSTS = []
-
-
+CORS_ALLOW_ALL_ORIGINS = True
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = "/"
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
+    'widget_tweaks',
+    "unfold.contrib.filters",
+    # 'django_admin_interface',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'nmcnpmapp',
+    #...
+    "admin_interface",
+    "colorfield",
+    #...
+    #...
 ]
+ROOT_URLCONF = 'myproject.urls'
+LOGIN_REDIRECT_URL = 'home'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
