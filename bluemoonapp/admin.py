@@ -35,7 +35,7 @@ class ArticleAdmin(admin.ModelAdmin):
         return super().changeform_view(request, object_id, form_url, extra_context)
 admin.site.register(Article, ArticleAdmin)
 
-
+#Quản lí tài khoản người dùng
 @admin.register(RoomUser)
 class RoomUser(admin.ModelAdmin):
     form = forms.RoomUserForm
