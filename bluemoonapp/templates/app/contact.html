@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Hệ thống Quản lý Thu phí</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v=8">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'css/services.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'css/responsive-tablet.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive-mobile.css' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6divZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #ffffff, #d7e7f3);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .div-contact {
+            background: rgba(255, 255, 255, 0.8); /* Tạo nền trắng mờ */
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Tạo hiệu ứng nổi */
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .div-contact {
+            display: flex;
+            align-items: center;
+        }
+        .div-image img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .div-info {
+            flex: 1;
+        }
+
+        .address a {
+            color: #007bff; /* Màu xanh đặc trưng */
+            text-decoration: none;
+        }
+        .address a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Quản lý Thu phí</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li class="nav-item"><a class="nav-link" href="/service"><i class="fas fa-cogs"></i> Dịch vụ</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about"><i class="fas fa-info-circle"></i> Giới thiệu</a></li>
+            <li class="nav-item active"><a class="nav-link" href="/contact"><i class="fas fa-envelope"></i> Liên hệ</a></li>
+            <li class="nav-item"><a class="nav-link" href="/notification"><i class="fas fa-bell"></i> Thông báo</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+            <!-- Dropdown for authenticated user -->
+            <div class="navbar-nav ml-auto dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Xin chào, {{ user.username }}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="/changepassword">Đổi mật khẩu</a>
+                    <a class="dropdown-item" href="/logout">Đăng xuất</a>
+                </div>
+            </div>
+        {% else %}
+        <div class="navbar-nav ml-auto">
+            <a class="btn btn-outline-primary mr-2" href="/login">Đăng nhập</a>
+            <a class="btn btn-outline-success" href="/signup">Đăng ký</a>
+        </div>
+        {% endif %}
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="homepage-header">
+    <div class="govuk-width-container">
+        <div class="homepage-header__title-container">
+            <h1 class="homepage-header__title">
+                Hệ thống Quản lý Thu phí
+            </h1>
+            <span class="homepage-header__intro">
+                Chung cư Blue Moon - Hà Nội
+            </span>
+        </div>
+    </div>
+</header>
+
+<main class="special-main">
+    <section>
+        <h3 class="hello">Liên hệ quản lý chung cư</h3>
+    </section>
+    <section>
+        <div class="div-contact fade-in">
+            <div class="div-image">
+                <img src="{% static 'img/ducanh.jpg' %}" alt="dangphuc" class="avatar">
+            </div>
+            <div class="div-info">
+                <h3 style="margin-bottom: 20px;">Quản lý toà A - B</h3>
+                <address class="address">
+                    Ông: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trần Văn Đức Anh
+                    <br />
+                    <img src="{% static 'icon/email.svg' %}" alt="email" style="display: inline-block; margin-bottom: 3px;" />
+                    Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="mailto:tranvanducanh@gmail.com">tranvanducanh@gmail.com</a><br />
+                    <img src="{% static 'icon/tablet.svg' %}" alt="phone" style="display: inline-block; margin-bottom: 3px;" />
+                    Điện thoại: &nbsp; <a href="tel:+84915487872">+84989999999</a><br />
+                </address>
+            </div>
+        </div>
+        <div class="div-contact fade-in">
+            <div class="div-image">
+                <img src="{% static 'img/dăngdz.jpg' %}" alt="ngockiet" class="avatar">
+            </div>
+            <div class="div-info">
+                <h3 style="margin-bottom: 20px;">Quản lý toà C - D </h3>
+                <address class="address">
+                    Ông: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vương Văn Đăng
+                    <br />
+                    <img src="{% static 'icon/email.svg' %}" alt="email" style="display: inline-block; margin-bottom: 3px;" />
+                    Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="mailto:vuongvandang@gmail.com">vuongvandang@gmail.com</a><br />
+                    <img src="{% static 'icon/tablet.svg' %}" alt="phone" style="display: inline-block; margin-bottom: 3px;" />
+                    Điện thoại: &nbsp; <a href="tel:+84999999998">+84999999998</a><br />
+                </address>
+            </div>
+        </div>
+        <div class="div-contact fade-in">
+            <div class="div-image">
+                <img src="{% static 'img/hiendz.jpg' %}" alt="html" class="avatar">
+            </div>
+            <div class="div-info">
+                <h3 style="margin-bottom: 20px;">Kế toán trưởng</h3>
+                <address class="address">
+                    Ông: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Trần Hoàng Hiền 
+                    <br />
+                    <img src="{% static 'icon/email.svg' %}" alt="email" style="display: inline-block; margin-bottom: 3px;" />
+                    Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="mailto:hoanghientran@gmail.com">hoanghientran@gmail.com</a><br />
+                    <img src="{% static 'icon/tablet.svg' %}" alt="phone" style="display: inline-block; margin-bottom: 3px;" />
+                    Điện thoại: &nbsp; <a href="tel:+84399999999">+84399999999</a><br />
+                </address>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- <div style="text-align: center; margin-top: 20px; margin-bottom: 20px; color: #323b44;">
+    <a href="/" class="btn btn-primary">Quay lại Trang chủ</a>
+</div> -->
+
+<!-- Footer -->
+<footer class="footer mt-auto text-center">
+    <div class="container">
+        <span class="text-muted">© 2024.2 - Kỹ thuật phần mềm.</span>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const elements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        });
+
+        elements.forEach(element => observer.observe(element));
+    });
+</script>
+</body>
+</html>

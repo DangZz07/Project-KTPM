@@ -1,0 +1,99 @@
+/* Animated gradient background cho phần login section */
+.login-section {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;  /* Đảm bảo chiều cao đủ cho phần này */
+}
+
+/* Keyframe cho gradient background */
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+}
+
+/* Nền của navbar màu xám */
+.navbar {
+    background-color: #6c757d;  /* Màu xám cho navbar */
+}
+
+/* Màu chữ cho các nav-item */
+.nav-item a {
+    color: #ffffff;  /* Màu chữ trắng cho nav-item */
+    transition: background-color 0.3s, color 0.3s ease;  /* Thêm hiệu ứng chuyển màu cho chữ và nền */
+}
+
+/* Màu chữ khi hover */
+.nav-item a:hover {
+    color: #000000;  /* Màu chữ khi hover (màu đen nhạt) */
+}
+
+/* Nền của nav-item khi hover */
+.navbar-nav .nav-item:hover {
+    background-color: #adb5bd;  /* Nền xám nhạt khi hover */
+}
+
+.user {
+  border-radius: 10px;
+  background-color: #456088;
+  border: #456088 1px solid;
+  color: white;
+  font-size: large;
+}
+
+.user:hover {
+  color: #87A4CF;
+}
+
+.sub-user {
+  display: none;
+  width: 20%;
+  margin: 0 auto 0 21%;
+  position: absolute;
+  top: 45px;
+  left: 66%;
+}
+
+.sub-user>li {
+  margin: 0;
+}
+
+.sub-user>li>a {
+  display: block;
+  color: #333;
+  width: 40%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: #333 1px solid;
+  text-align: center;
+  background-color: white;
+}
+
+.sub-user>li>a:hover {
+  color: #87A4CF;
+  text-decoration: none;
+}
+
+.custom-div3:hover .sub-user {
+  display: block;
+}
+
+/* Mặc định ẩn phần help-text */
+.help-text {
+  display: none;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Khi input được focus, hiển thị help-text */
+.input-group input:focus ~ .help-text {
+  display: block;
+  color: #6c757d; /* Màu chữ trợ giúp */
+}

@@ -1,0 +1,35 @@
+
+/* Thay đổi màu nền của các form */
+fieldset.module {
+    /* background-color: #ecebeb !important; Màu nền xám nhạt */
+    padding: 20px !important;
+    border-radius: 8px;
+    border: 1px solid #ccc !important;
+}
+
+/* Bôi đậm tiêu đề của các trường */
+label {
+    font-weight: bold !important;
+    color: #333 !important; /* Màu chữ đậm hơn */
+}
+
+/* Tạo khoảng cách và viền cho input */
+input, select, textarea {
+    padding: 10px !important;
+    border: 1px solid #888 !important;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 80%;
+}
+.readonly {
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: calc(100% + 20px);; /* Điều chỉnh kích thước tại đây */
+    background-color: #f9f9f9; /* Tùy chọn màu nền cho readonly */
+    color: #666; /* Tùy chọn màu chữ */
+}
+
+
+

@@ -1,0 +1,44 @@
+/* styles.css */
+
+/* Modal styling */
+.modal-body {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  /* Table styling */
+  .table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .table td {
+    color: #333;
+  }
+  
+  /* Hover effect */
+  .table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Family member names styling */
+  .table td b {
+    font-size: 1.1em;
+    color: #007BFF;
+  }
+  
