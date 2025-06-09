@@ -61,7 +61,7 @@ class RoomUser(admin.ModelAdmin):
     
 
 #Quản lí phương tiện
-@admin.register(SuperUser)
+@admin.register(Vehicle)
 class VehicleIn4(admin.ModelAdmin):
     list_display = ('room_id', 'license_plate', 'type_vehicle')
     search_fields = ('license_plate', 'type_vehicle', 'room_id__room_id')

@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("nmcnpmapp", "0002_remove_payment_payment"),
+        ("bluemoonapp", "0002_remove_payment_payment"),
     ]
 
     operations = [

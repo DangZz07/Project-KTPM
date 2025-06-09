@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('nmcnpmapp', '0006_alter_article_options_alter_charge_options_and_more'),
+        ('bluemoonapp', '0006_alter_article_options_alter_charge_options_and_more'),
     ]
 
     operations = [
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=255, verbose_name='Tiêu đề')),
                 ('content', models.TextField(verbose_name='Nội dung')),
                 ('date', models.DateField(auto_now_add=True, verbose_name='Ngày đăng')),
-                ('room_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='notifications', to='nmcnpmapp.apartment', verbose_name='Số phòng')),
+                ('room_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='notifications', to='bluemoonapp.apartment', verbose_name='Số phòng')),
             ],
             options={
                 'verbose_name': 'Quản lý thông báo',

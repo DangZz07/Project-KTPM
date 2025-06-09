@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         (
-            "nmcnpmapp",
+            "bluemoonapp",
             "0003_remove_familymember_age_familymember_date_of_birth_and_more",
         ),
     ]

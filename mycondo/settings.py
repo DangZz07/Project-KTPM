@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1v+fbc!rdrq=tbamx4myhnd!#n4ww2rkq1##qqnoxy+xwubf7d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['*']
-AUTH_USER_MODEL = 'nmcnpmapp.SuperUser'
+AUTH_USER_MODEL = 'bluemoonapp.SuperUser'
 
 CORS_ALLOW_ALL_ORIGINS = True
 LOGIN_URL = 'login'
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'nmcnpmapp',
+    'bluemoonapp',
     #...
     "admin_interface",
     "colorfield",

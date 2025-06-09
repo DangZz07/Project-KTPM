@@ -119,7 +119,7 @@ class Migration(migrations.Migration):
                 (
                     "target_room",
                     models.ManyToManyField(
-                        related_name="charges", to="nmcnpmapp.apartment"
+                        related_name="charges", to="bluemoonapp.apartment"
                     ),
                 ),
             ],
@@ -138,7 +138,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name="family_members",
-                        to="nmcnpmapp.apartment",
+                        to="bluemoonapp.apartment",
                     ),
                 ),
             ],
@@ -156,7 +156,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name="payments",
-                        to="nmcnpmapp.charge",
+                        to="bluemoonapp.charge",
                     ),
                 ),
                 (
@@ -164,7 +164,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name="payments",
-                        to="nmcnpmapp.apartment",
+                        to="bluemoonapp.apartment",
                     ),
                 ),
             ],
@@ -201,7 +201,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name="user",
-                        to="nmcnpmapp.apartment",
+                        to="bluemoonapp.apartment",
                     ),
                 ),
             ],
@@ -228,7 +228,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
                         related_name="vehicles",
-                        to="nmcnpmapp.apartment",
+                        to="bluemoonapp.apartment",
                     ),
                 ),
             ],

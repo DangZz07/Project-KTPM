@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("nmcnpmapp", "0004_charge_category"),
+        ("bluemoonapp", "0004_charge_category"),
     ]
 
     operations = [

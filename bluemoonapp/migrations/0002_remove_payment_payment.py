@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("nmcnpmapp", "0001_initial"),
+        ("bluemoonapp", "0001_initial"),
     ]
 
     operations = [

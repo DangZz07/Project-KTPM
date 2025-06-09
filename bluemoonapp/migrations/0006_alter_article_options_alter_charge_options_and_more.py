@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('nmcnpmapp', '0005_alter_charge_category'),
+        ('bluemoonapp', '0005_alter_charge_category'),
     ]
 
     operations = [
@@ -84,7 +84,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='charge',
             name='target_room',
-            field=models.ManyToManyField(related_name='charges', to='nmcnpmapp.apartment', verbose_name='Đối tượng thu'),
+            field=models.ManyToManyField(related_name='charges', to='bluemoonapp.apartment', verbose_name='Đối tượng thu'),
         ),
         migrations.AlterField(
             model_name='familymember',
@@ -109,7 +109,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='familymember',
             name='room_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='family_members', to='nmcnpmapp.apartment', verbose_name='Số phòng'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='family_members', to='bluemoonapp.apartment', verbose_name='Số phòng'),
         ),
         migrations.AlterField(
             model_name='payment',
@@ -119,7 +119,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='payment',
             name='charge_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='payments', to='nmcnpmapp.charge', verbose_name='Mã khoản thu'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='payments', to='bluemoonapp.charge', verbose_name='Mã khoản thu'),
         ),
         migrations.AlterField(
             model_name='payment',
@@ -134,7 +134,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='payment',
             name='room_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='payments', to='nmcnpmapp.apartment', verbose_name='Số phòng'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='payments', to='bluemoonapp.apartment', verbose_name='Số phòng'),
         ),
         migrations.AlterField(
             model_name='payment',
@@ -164,7 +164,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='roomuser',
             name='room_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user', to='nmcnpmapp.apartment', verbose_name='Số phòng'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user', to='bluemoonapp.apartment', verbose_name='Số phòng'),
         ),
         migrations.AlterField(
             model_name='roomuser',
@@ -179,7 +179,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='vehicle',
             name='room_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='vehicles', to='nmcnpmapp.apartment', verbose_name='Số phòng'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='vehicles', to='bluemoonapp.apartment', verbose_name='Số phòng'),
         ),
         migrations.AlterField(
             model_name='vehicle',
