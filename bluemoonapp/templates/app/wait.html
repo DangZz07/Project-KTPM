@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chờ - Hệ thống Quản lý Thu phí</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v=8">
+    <link rel="stylesheet" href="/static/css/msg.css">
+    <link rel="stylesheet" href="/static/css/wait.css">
+    <link rel="stylesheet" href="/static/css/newstyles.css">
+    <link rel="stylesheet" href="/static/css/responsive-tablet.css">
+    <link rel="stylesheet" href="/static/css/responsive-mobile.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+        /* CSS for a sticky footer */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+        }
+        /* General Header Styling with Centered Text */
+        .homepage-header {
+            background: url("{% static 'img/building.png' %}") no-repeat center center; /* Set the background image */
+            background-size: cover; /* Ensure the background covers the entire header without stretching */
+            background-position: center center; /* Center the image */
+            color: white;
+            display: flex;
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            text-align: center;
+            height: 40vh; /* Height of the header */
+            position: relative;
+            padding: 0 20px;
+        }
+
+        /* Title Styling */
+        .homepage-header__title {
+            font-size: 4rem; /* Increased font size for the title */
+            font-weight: bold;
+            margin: 0;
+            color: #fdfdfd; /* Soft white */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for contrast */
+        }
+
+        /* Subtitle Styling */
+        .homepage-header__intro {
+            font-size: 2.5rem; /* Increased font size for the subtitle */
+            font-weight: 500;
+            margin-top: 5px;
+            color: #dddacc; /* Subtle golden tone */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Softer shadow */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Quản lý Thu phí</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link" href="/service"><i class="fas fa-cogs"></i> Dịch vụ</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about"><i class="fas fa-info-circle"></i> Giới thiệu</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope"></i> Liên hệ</a></li>
+                <li class="nav-item"><a class="nav-link" href="/notification"><i class="fas fa-bell"></i> Thông báo</a></li>
+            </ul>
+            {% if user.is_authenticated %}
+            <div class="navbar-nav ml-auto">
+                <span class="navbar-text mr-3">Xin chào, {{ user.username }}</span>
+                <a class="btn btn-outline-secondary mr-2" href="/changepassword">Đổi mật khẩu</a>
+                <a class="btn btn-outline-danger" href="/logout">Đăng xuất</a>
+            </div>
+            {% else %}
+            <div class="navbar-nav ml-auto">
+                <a class="btn btn-outline-primary mr-2" href="/login">Đăng nhập</a>
+                <a class="btn btn-outline-success" href="/signup">Đăng ký</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="homepage-header">
+        <div class="govuk-width-container">
+            <div class="homepage-header__title-container">
+                <h1 class="homepage-header__title">
+                    Hệ thống Quản lý Thu phí
+                </h1>
+                <span class="homepage-header__intro">
+                    Chung cư Blue Moon - Hà Nội
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section>
+            <h3>Chờ phê duyệt</h3>
+            <p>Xin chào bạn, thông tin của bạn hiện đang được chờ phê duyệt từ quản trị viên.</p>
+            <p>Vui lòng chờ 1 thời gian ngắn trước khi sử dụng dịch vụ!</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <span class="text-muted">© 2024.2 - Kỹ thuật phần mềm.</span>
+        </div>
+    </footer>
+
+    <!-- Toast messages -->
+    {% if messages %}
+    <div id="toast-container">
+        {% for message in messages %}
+            <div class="toast {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach(toast => {
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 3500); // 3.5s để biến mất
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+

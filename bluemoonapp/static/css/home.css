@@ -1,0 +1,102 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, #ffffff, #d7e7f3);
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+}
+
+/* General Header Styling with Centered Text */
+.homepage-header {
+    height: 200px; /* Đặt chiều cao cố định */
+    background: url('/static/img/building.png') no-repeat center center;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+/* Title Styling */
+.homepage-header__title {
+    font-size: 4rem; /* Increased font size for the title */
+    font-weight: bold;
+    margin: 0;
+    color: #fdfdfd; /* Soft white */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for contrast */
+}
+
+/* Subtitle Styling */
+.homepage-header__intro {
+    font-size: 2.5rem; /* Increased font size for the subtitle */
+    font-weight: 500;
+    margin-top: 5px;
+    color: #dddacc; /* Subtle golden tone */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Softer shadow */
+}
+
+
+.custom-div3 {
+    width: 13%;
+    text-align: center;
+    z-index: 10;
+}
+
+.user {
+    border-radius: 10px;
+    background-color: #456088;
+    border: #456088 1px solid;
+    color: white;
+    font-size: large;
+}
+
+.user:hover {
+    color: #87A4CF;
+}
+
+.sub-user {
+    display: none;
+    width: 20%;
+    margin: 0 auto 0 21%;
+    position: absolute;
+    top: 45px;
+    left: 66%;
+}
+
+.sub-user>li {
+    margin: 0;
+}
+
+.sub-user>li>a {
+    display: block;
+    color: #333;
+    width: 40%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: #333 1px solid;
+    text-align: center;
+    background-color: white;
+}
+
+.sub-user>li>a:hover {
+    color: #87A4CF;
+    text-decoration: none;
+}
+
+.custom-div3:hover .sub-user {
+    display: block;
+}
