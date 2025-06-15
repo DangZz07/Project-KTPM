@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
-from .models import FamilyMember,Charge, Payment, Article, RoomUser, Notification
+from .models import FamilyMember,Charge,Vehicle, Payment, Article, RoomUser, Notification
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views import generic
@@ -75,12 +75,15 @@ def list_member(request):
     try:
         # Fetch all family members for the logged-in user's room
         family_members = FamilyMember.objects.filter(room_id=user.room_id)
+        vehicles = Vehicle.objects.filter(room_id=user.room_id) 
     except AttributeError:
         # If `user.roomuser` or `room_id` is not accessible, log this or handle it as needed
         family_members = []
+        vehicles = []
+
 
     # Pass family_members directly to the template
-    return render(request, 'app/member.html', {'family_members': family_members})
+    return render(request, 'app/member.html', {'family_members': family_members, 'vehicles': vehicles})
 
 @login_required
 def changepassword(request):
@@ -158,6 +161,45 @@ def add_member(request):
 
     return render(request, 'app/add_member.html')
 
+@login_required
+def add_vehicle(request):
+    if request.method == 'POST':
+        print(request.POST)  # In ra toàn bộ dữ liệu POST lên terminal
+        # hoặc log từng trường
+        print("license_plate:", request.POST.get('license_plate'))
+        print("type_vehicle:", request.POST.get('type_vehicle'))
+      
+        room_user = get_object_or_404(RoomUser, username=request.user.username)
+        print("room_user:", room_user.__dict__)  # In ra thông tin của room_user
+        license_plate = request.POST.get('license_plate')
+        vehicle_type = request.POST.get('vehicle_type')
+
+        # Kiểm tra dữ liệu hợp lệ
+        if not (license_plate and vehicle_type and room_user):
+            messages.error(request, "Vui lòng nhập đầy đủ thông tin hợp lệ.")
+            return redirect('service')
+        if not re.match( r'^[A-Z0-9-]+$', license_plate):
+            messages.error(request, "Biển số xe không hợp lệ. Vui lòng nhập đúng định dạng.")
+            return redirect('service')
+        try:
+            # Tạo thành viên mới
+            Vehicle.objects.create(
+                room_id=room_user.room_id,
+                license_plate=license_plate,
+                type_vehicle=vehicle_type
+            )
+            messages.success(request, "Thêm thành viên thành công.")
+        except IntegrityError:
+            # Xử lý lỗi UNIQUE constraint liên quan đến biển số xe
+            messages.error(request, "Thông tin phương tiện không hợp lệ. Biển số xe đã tồn tại.")
+        except Exception as e:
+            # Xử lý các lỗi không mong muốn khác
+            messages.error(request, f"Đã xảy ra lỗi: {str(e)}")
+
+        return redirect('service')
+
+    return render(request, 'app/add_vehicle.html')
+
 
 @login_required
 def wait(request):
@@ -175,3 +217,5 @@ def service_view(request):
     family_group = Group.objects.filter(user=user).first()  # Lấy group đầu tiên mà user thuộc
     is_member = family_group is not None
     return render(request, 'app/service.html', {'is_member': is_member})
+
+

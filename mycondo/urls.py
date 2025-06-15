@@ -25,6 +25,8 @@ urlpatterns = [
     path('change-password-done/', password_change_done, name='password_change_done'),
     path("add_member/", views.add_member, name="add_member"),
     path('list_member/', views.list_member, name='list_member'),
+    path('list_member/', views.list_member, name='list_member'),
+    path('add_vehicle/', views.add_vehicle, name='add_vehicle'),
 ]
 
 if settings.DEBUG:

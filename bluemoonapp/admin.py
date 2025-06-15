@@ -242,8 +242,10 @@ class ChargeAdmin(admin.ModelAdmin):
         elif category in ["Phí dịch vụ", "Phí quản lý"] and unit_price:
             # Tính toán amount từ đơn giá
             form.calculate_service_fee(unit_price, obj)
-            # Thêm các target_room vào charge
-            target_residents = apartment.objects.values_list('room_id', flat=True)
+            # Thêm các target_room vào charge (chỉ phòng có người ở)
+            from .models import RoomUser
+            active_room_ids = RoomUser.objects.filter(is_active=True).values_list('room_id', flat=True).distinct()
+            target_residents = apartment.objects.filter(room_id__in=active_room_ids)
             obj.target_room.set(target_residents)
             obj.save()
         elif category == "Phí gửi xe":
