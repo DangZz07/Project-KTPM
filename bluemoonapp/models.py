@@ -111,7 +111,6 @@ class Vehicle(models.Model):
     - Mỗi phương tiện gắn với một phòng.
     """
     CATEGORY_CHOICES = [
-        (1, "Xe đạp"),
         (2, "Xe máy"),
         (3, "Ô tô"),
     ]

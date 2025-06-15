@@ -145,8 +145,8 @@ class ChargeForm(forms.ModelForm):
         Tính toán amount = đơn giá * diện tích cho Phí dịch vụ/Phí quản lý.
         """
         payments = []
-        rooms = apartment.objects.all()
-        for room in rooms:
+        apartments_with_users = apartment.objects.filter(room_id__in=RoomUser.objects.values('room_id'))  # Lấy tất cả các phòng có room_id không null
+        for room in apartments_with_users :
             amount = unit_price * room.area
             payments.append(Payment(
                 charge_id=charge_instance,
@@ -163,7 +163,7 @@ class ChargeForm(forms.ModelForm):
             payments.append(Payment(
                 charge_id=charge_instance,
                 room_id=vehicle.room_id,
-                amount=50 if vehicle.type_vehicle == 0 else 100 if vehicle.type_vehicle == 1 else 300
+                amount = 70000 if vehicle.type_vehicle == 2 else 1200000 if vehicle.type_vehicle == 3 else 0
             ))
         Payment.objects.bulk_create(payments)
 
@@ -252,3 +252,14 @@ class FamilyMemberForm(forms.ModelForm):
             raise ValidationError("Số CCCD phải có 12 chữ số và không có ký tự khác.")
         
         return cleaned_data
+    
+    class VehicleForm(forms.ModelForm):
+        class Meta:
+            model = Vehicle
+            fields = ['license_plate', 'type_vehicle', 'room_id']
+
+        def clean_license_plate(self):
+            license_plate = self.cleaned_data.get('license_plate')
+            if not re.match(r'^[A-Z0-9-]+$', license_plate):
+                raise ValidationError("Biển số xe không hợp lệ. Vui lòng nhập đúng định dạng.")
+            return license_plate
