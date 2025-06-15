@@ -3,7 +3,7 @@
 import os
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mycondo.settings')
 django.setup()
 
 from bluemoonapp.models import apartment
