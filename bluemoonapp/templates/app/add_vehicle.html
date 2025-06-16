@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm Thành Viên Gia Đình</title>
+    <title>Thêm Phương tiện</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}?v=8">
     <link rel="stylesheet" href="{% static 'css/newstyles.css' %}">
@@ -98,7 +98,7 @@
     <!-- Content -->
     <div class="container content mt-4" data-aos="fade-up" data-aos-duration="1000">
         <div class="contact-form-box" style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9;">
-            <h2 class="text-center mb-4 ">Thêm Thành Viên Gia Đình</h2>
+            <h2 class="text-center mb-4 ">Thêm Phương tiện</h2>
             <form method="POST" action="{% url 'add_vehicle' %}">
                 {% csrf_token %}
                 <div class="form-group">
@@ -106,7 +106,6 @@
                     <input type="text" id="license_plate" name="license_plate" class="form-control" placeholder="Nhập biển số xe" required>
                 </div>
                 <select name="vehicle_type" id="vehicle_type">
-                    <option value="1">Xe đạp</option>
                     <option value="2">Xe máy</option>
                     <option value="3">Ô tô</option>
                 </select>
