@@ -188,7 +188,7 @@ def add_vehicle(request):
                 license_plate=license_plate,
                 type_vehicle=vehicle_type
             )
-            messages.success(request, "Thêm thành viên thành công.")
+            messages.success(request, "Thêm phương tiện thành công.")
         except IntegrityError:
             # Xử lý lỗi UNIQUE constraint liên quan đến biển số xe
             messages.error(request, "Thông tin phương tiện không hợp lệ. Biển số xe đã tồn tại.")
